@@ -2,18 +2,22 @@
   "name": "zod-message-bus",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "ci": "pnpm run lint && pnpm run test && pnpm run build",
     "dev": "vitest",
     "test": "vitest run",
     "lint": "tsc",
-    "build": "tsup ./src/index.ts --format cjs,esm --dts"
+    "build": "tsup ./src/index.ts --format cjs,esm --dts",
+    "ci": "pnpm run lint && pnpm run test && pnpm run build",
+    "release": "pnpm run lint && pnpm run test && pnpm run build && changeset publish"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@changesets/cli": "^2.27.11",
     "@types/node": "^20.17.10",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
